@@ -1,0 +1,69 @@
+---
+export const prerender = true
+
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ArticleCard from '../components/cards/ArticleCard.astro'
+import { reader } from '../lib/reader'
+
+const allArticles = await reader.collections.articles.all()
+
+const articles = await Promise.all(
+  allArticles
+    .filter((a) => a.entry.status === 'published' && a.entry.contentType === 'contexto')
+    .sort((a, b) => (b.entry.publishedAt ?? '').localeCompare(a.entry.publishedAt ?? ''))
+    .map(async (a) => {
+      const cat = a.entry.category
+        ? await reader.collections.categories.read(a.entry.category)
+        : null
+      return {
+        slug: a.slug,
+        title: a.entry.title,
+        excerpt: a.entry.excerpt,
+        contentType: a.entry.contentType,
+        publishedAt: a.entry.publishedAt,
+        readingTimeMinutes: a.entry.readingTimeMinutes,
+        coverImage: a.entry.coverImage,
+        coverImageAlt: a.entry.coverImageAlt,
+        category: cat ? { title: cat.title, color: cat.color } : null,
+      }
+    })
+)
+---
+
+<BaseLayout
+  title="Contexto Internacional"
+  description="Casos internacionales y comparativas que iluminan los desafíos de Costa Rica."
+>
+  <section class="border-b border-black">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <p class="text-[11px] uppercase tracking-widest text-[#6B6B6B] mb-3">Perspectiva global</p>
+      <h1 class="text-4xl md:text-5xl font-black tracking-tight">Contexto Internacional</h1>
+      <p class="text-lg text-[#444] mt-4 max-w-2xl leading-relaxed">
+        ¿Cómo lo resolvieron en otras partes? Casos de referencia y comparativas internacionales.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    {articles.length === 0 ? (
+      <p class="text-[#6B6B6B] py-16 text-center">Próximamente.</p>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E8E8E8] border border-[#E8E8E8]">
+        {articles.map((a) => (
+          <div class="bg-white">
+            <ArticleCard
+              title={a.title}
+              slug={a.slug}
+              excerpt={a.excerpt ?? undefined}
+              contentType={a.contentType}
+              publishedAt={a.publishedAt ?? undefined}
+              readingTimeMinutes={a.readingTimeMinutes ?? undefined}
+              coverImage={a.coverImage ? { url: a.coverImage, alt: a.coverImageAlt ?? a.title } : undefined}
+              category={a.category ?? undefined}
+            />
+          </div>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>

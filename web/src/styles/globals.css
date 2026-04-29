@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import url("https://rsms.me/inter/inter.css");
+
+/* ── KUKO design tokens ───────────────────────────────────────────────────── */
+@theme {
+  /* Font */
+  --font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
+
+  /* Accent color */
+  --color-accent: #00A896;
+
+  /* All border-radius → 0. Explicit rounded-full stays at 9999px (Tailwind default). */
+  --radius: 0rem;
+  --radius-sm: 0rem;
+  --radius-md: 0rem;
+  --radius-lg: 0rem;
+  --radius-xl: 0rem;
+  --radius-2xl: 0rem;
+  --radius-3xl: 0rem;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --color-ink: #1A1A1A;
+    --color-muted: #6B6B6B;
+    --color-border: #E8E8E8;
+    --color-surface: #FAFAFA;
+  }
+
+  html {
+    font-family: "Inter Variable", "Inter", system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #1A1A1A;
+  }
+
+  /* Hard zero border-radius everywhere — design system rule */
+  *, *::before, *::after {
+    border-radius: 0 !important;
+  }
+
+  /* Explicit exception: pill shapes only where intentional */
+  .rounded-full, .rounded-full::before, .rounded-full::after {
+    border-radius: 9999px !important;
+  }
+}

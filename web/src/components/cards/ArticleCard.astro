@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string
+  slug: string
+  excerpt?: string
+  contentType?: string
+  publishedAt?: string
+  readingTimeMinutes?: number
+  category?: { title: string; color?: string }
+  authors?: { name: string }[]
+  coverImage?: { url: string; alt: string; lqip?: string }
+  featured?: boolean
+}
+
+const {
+  title,
+  slug,
+  excerpt,
+  contentType,
+  publishedAt,
+  readingTimeMinutes,
+  category,
+  authors,
+  coverImage,
+  featured = false,
+} = Astro.props
+
+const date = publishedAt
+  ? new Date(publishedAt).toLocaleDateString('es-CR', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null
+
+const authorNames = authors?.map((a) => a.name).join(', ')
+---
+
+<article class={`group border border-[#E8E8E8] hover:border-black transition-colors ${featured ? 'md:flex' : ''}`}>
+  {coverImage && (
+    <a href={`/articulo/${slug}`} class={`block overflow-hidden ${featured ? 'md:w-1/2 shrink-0' : ''}`} tabindex="-1" aria-hidden="true">
+      <img
+        src={coverImage.url + '?w=800&auto=format'}
+        alt={coverImage.alt}
+        class={`w-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ${featured ? 'h-64 md:h-full' : 'h-48'}`}
+        loading="lazy"
+        style={coverImage.lqip ? `background-image: url(${coverImage.lqip}); background-size: cover;` : undefined}
+      />
+    </a>
+  )}
+
+  <div class="p-6 flex flex-col gap-3">
+    <div class="flex items-center gap-2 flex-wrap">
+      {category && (
+        <span class="text-[11px] uppercase tracking-widest font-semibold" style={`color: ${category.color ?? '#6B6B6B'}`}>
+          {category.title}
+        </span>
+      )}
+      {contentType && !category && (
+        <span class="text-[11px] uppercase tracking-widest text-[#6B6B6B]">{contentType}</span>
+      )}
+    </div>
+
+    <h2 class={`font-bold leading-snug ${featured ? 'text-2xl' : 'text-lg'}`}>
+      <a href={`/articulo/${slug}`} class="hover:text-[#00A896] transition-colors">{title}</a>
+    </h2>
+
+    {excerpt && (
+      <p class="text-sm text-[#444] leading-relaxed line-clamp-3">{excerpt}</p>
+    )}
+
+    <div class="mt-auto pt-2 flex items-center gap-3 text-[12px] text-[#6B6B6B]">
+      {authorNames && <span>{authorNames}</span>}
+      {date && <span>{date}</span>}
+      {readingTimeMinutes && <span>{readingTimeMinutes} min</span>}
+    </div>
+  </div>
+</article>

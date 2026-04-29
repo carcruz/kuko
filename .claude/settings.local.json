@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm build *)",
+      "Bash(pnpm dev *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/articulo/sistema-numeracion-buses)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(pnpm --version)",
+      "Bash(curl -s http://localhost:4322/articulo/sistema-numeracion-buses)",
+      "Bash(curl -s \"http://localhost:4322/src/styles/globals.css\")",
+      "Bash(node -e ' *)",
+      "Bash(pkill -f \"astro dev\")",
+      "Bash(npm run *)",
+      "Bash(curl -s \"http://localhost:4322/articulo/sistema-numeracion-buses\")"
+    ]
+  }
+}

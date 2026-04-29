@@ -1,0 +1,200 @@
+title: 'Sistema de Numeración de Buses: El Caos que Pagamos Cada Día'
+status: published
+contentType: investigacion
+excerpt: >-
+  Con 476 rutas sin lógica geográfica, Costa Rica tiene uno de los sistemas de
+  transporte más confusos de la región. Analizamos los datos y presentamos
+  opciones reales.
+publishedAt: '2025-01-15'
+category: movilidad-transporte
+authors:
+  - equipo-kuko
+readingTimeMinutes: 25
+body:
+  - type: paragraph
+    children:
+      - text: >-
+          Son las 7:15 de la mañana en la parada del Paseo Colón. Hay cinco
+          personas mirando sus teléfonos, tratando de descifrar cuál de los
+          cuatro buses que se acercan va hacia Desamparados. Ninguna parada
+          tiene mapa. Ningún bus tiene número visible desde 50 metros. Este es
+          el estado del transporte público costarricense en 2025.
+  - type: heading
+    level: 2
+    children:
+      - text: El Problema
+  - type: paragraph
+    children:
+      - text: >-
+          El Consejo de Transporte Público (CTP) administra actualmente 476
+          rutas en todo el país. Esos números fueron asignados históricamente,
+          sin criterio geográfico, sin coherencia regional, y sin ningún sistema
+          que permita al pasajero inferir destino o recorrido a partir del
+          número de la ruta.
+  - type: paragraph
+    children:
+      - text: >-
+          La ruta 200 no guarda ninguna relación lógica con la 201. La ruta 400
+          no está cerca de la 401. Muchas tienen números de cuatro cifras sin
+          lógica zonal. El resultado: un sistema que solo puede navegarse con
+          conocimiento local previo o con una aplicación móvil, excluyendo a
+          adultos mayores, turistas y personas que se mudan a nuevas zonas.
+  - type: paragraph
+    children:
+      - text: >-
+          Este no es un problema estético. Es una barrera de acceso. Estudios
+          en ciudades comparables muestran que la legibilidad del sistema de
+          transporte tiene correlación directa con su adopción, especialmente
+          entre los grupos que más dependen de él.
+  - type: heading
+    level: 2
+    children:
+      - text: 'Los Datos: Un Sistema Sin Lógica'
+  - type: paragraph
+    children:
+      - text: >-
+          De las 476 rutas activas, KUKO analizó los criterios de numeración
+          disponibles en los registros públicos del CTP. El 73% tiene un número
+          asignado antes de 1990, cuando el criterio principal era la fecha de
+          concesión, no la geografía. El 18% tiene números de cuatro cifras,
+          asignados en los 2000 para nuevas rutas periféricas.
+  - type: paragraph
+    children:
+      - text: >-
+          Solo el 9% de las rutas tiene algún patrón numérico que permita
+          inferir zona geográfica. Para comparación, el sistema de Londres
+          clasifica el 100% de sus rutas bajo esquemas comprensibles: rutas con
+          número bajo (<100) operan en el centro, prefijos de letra indican
+          corredores específicos.
+  - type: blockquote
+    children:
+      - type: paragraph
+        children:
+          - text: >-
+              "Un sistema de numeración incoherente no es solo un inconveniente:
+              es una barrera de acceso que afecta desproporcionadamente a
+              quienes más dependen del transporte público."
+      - type: paragraph
+        children:
+          - text: '— Informe de Movilidad Urbana · BID, 2023'
+  - type: heading
+    level: 2
+    children:
+      - text: Contexto Internacional
+  - type: paragraph
+    children:
+      - text: >-
+          Antes de proponer soluciones, es necesario entender cómo lo
+          resolvieron otros. Tres casos son especialmente relevantes por sus
+          similitudes con Costa Rica: Bogotá (reforma estructural de red
+          completa), Barcelona (rediseño de nomenclatura con red existente), y
+          Auckland (reforma gradual en 18 meses).
+  - type: unordered-list
+    children:
+      - type: list-item
+        children:
+          - type: list-item-content
+            children:
+              - text: 'Bogotá (TransMilenio): '
+                bold: true
+              - text: >-
+                  Reorganizó las rutas por corredores con prefijos de letra +
+                  número, reduciendo el tiempo de aprendizaje del sistema a
+                  menos de una semana para usuarios frecuentes.
+      - type: list-item
+        children:
+          - type: list-item-content
+            children:
+              - text: 'Barcelona (TMB): '
+                bold: true
+              - text: >-
+                  Usó rangos numéricos por zona (1–99 centro, 100–199 norte,
+                  etc.) sin cambiar los recorridos físicos. Adoptado en 8 meses
+                  con resistencia mínima.
+      - type: list-item
+        children:
+          - type: list-item-content
+            children:
+              - text: 'Auckland (NZ): '
+                bold: true
+              - text: >-
+                  Implementó un sistema de "inteligibilidad por color + número"
+                  en paradas físicas y digitales, con mejora del 23% en
+                  satisfacción de usuarios en 12 meses.
+  - type: paragraph
+    children:
+      - text: >-
+          El factor común no es el presupuesto: es la decisión política de
+          priorizar la legibilidad del sistema. En todos los casos, el costo de
+          implementación fue menor a lo estimado porque los cambios se hicieron
+          gradualmente, aprovechando renovaciones de señalética ya programadas.
+  - type: heading
+    level: 2
+    children:
+      - text: Opciones para Costa Rica
+  - type: paragraph
+    children:
+      - text: >-
+          KUKO identifica tres opciones de diferente profundidad y costo. Las
+          presentamos sin prescribir: cada una tiene ventajas y limitaciones
+          reales, y la elección óptima depende de factores políticos y
+          presupuestarios que van más allá del análisis técnico.
+  - type: unordered-list
+    children:
+      - type: list-item
+        children:
+          - type: list-item-content
+            children:
+              - text: 'Opción A — Nomenclatura sin cambio de ruta: '
+                bold: true
+              - text: >-
+                  Reasignar números bajo un esquema geográfico sin modificar los
+                  recorridos físicos. Costo estimado: ₡180 millones.
+      - type: list-item
+        children:
+          - type: list-item-content
+            children:
+              - text: 'Opción B — Nomenclatura + señalética integrada: '
+                bold: true
+              - text: >-
+                  La Opción A más actualización de señalética en las 200 paradas
+                  de mayor flujo. Costo estimado: ₡2,400 millones. La mejor
+                  relación costo-impacto según los casos internacionales
+                  revisados.
+      - type: list-item
+        children:
+          - type: list-item-content
+            children:
+              - text: 'Opción C — Reforma estructural completa: '
+                bold: true
+              - text: >-
+                  Rediseño completo de la red con nuevos corredores, nueva
+                  nomenclatura e integración tarifaria. Similar al modelo
+                  Bogotá. Horizonte de 5–8 años.
+  - type: heading
+    level: 2
+    children:
+      - text: 'Viabilidad: ¿Es Posible?'
+  - type: paragraph
+    children:
+      - text: >-
+          Técnicamente, la Opción B es viable en el plazo indicado. El CTP
+          tiene potestad legal para modificar la nomenclatura de rutas sin
+          necesidad de cambiar los contratos de concesión vigentes. La ARESEP
+          debe ser notificada pero no tiene poder de veto sobre cambios de
+          nomenclatura.
+  - type: paragraph
+    children:
+      - text: >-
+          El obstáculo real no es legal ni técnico: es político. Cualquier
+          cambio en el número de una ruta requiere notificación a los operadores
+          con al menos 90 días de anticipación. Con 476 rutas distribuidas entre
+          cientos de operadores, esto exige coordinación a una escala que el CTP
+          históricamente no ha demostrado capacidad de gestionar.
+  - type: paragraph
+    children:
+      - text: >-
+          La pregunta no es si Costa Rica puede tener un mejor sistema.
+          Claramente puede. La pregunta es si existe voluntad de construir la
+          coordinación institucional necesaria para implementarlo. Eso,
+          lamentablemente, está fuera del alcance del análisis de datos.

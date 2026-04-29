@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Acerca de KUKO"
+  description="KUKO es un medio de periodismo de datos independiente dedicado a la investigación en Costa Rica."
+>
+  <!-- Header -->
+  <section class="border-b border-black">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <p class="text-[11px] uppercase tracking-widest text-[#6B6B6B] mb-3">Nosotros</p>
+      <h1 class="text-4xl md:text-5xl font-black tracking-tight">Acerca de KUKO</h1>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="border-b border-[#E8E8E8]">
+    <div class="max-w-7xl mx-auto px-6 py-16 max-w-3xl">
+      <p class="text-2xl md:text-3xl font-light leading-relaxed text-[#1A1A1A]">
+        KUKO investiga los sistemas que moldean la vida en Costa Rica — transporte, salud, educación, medio ambiente —
+        y los hace comprensibles mediante datos, visualizaciones y periodismo riguroso.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lo que somos / no somos -->
+  <section class="border-b border-[#E8E8E8]">
+    <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-px bg-[#E8E8E8] border border-[#E8E8E8]">
+      <div class="bg-white p-10">
+        <p class="text-[11px] uppercase tracking-widest text-[#00A896] mb-6">Lo que somos</p>
+        <ul class="flex flex-col gap-4">
+          {[
+            'Periodismo de datos riguroso e independiente',
+            'Solicitudes SAIP sistemáticas',
+            'Metodología abierta y reproducible',
+            'Sin anunciantes ni conflictos de interés',
+            'Enfocados en Costa Rica',
+          ].map((item) => (
+            <li class="flex items-start gap-3 text-sm leading-relaxed">
+              <span class="text-[#00A896] mt-0.5 shrink-0">+</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="bg-[#FAFAFA] p-10">
+        <p class="text-[11px] uppercase tracking-widest text-[#6B6B6B] mb-6">Lo que no somos</p>
+        <ul class="flex flex-col gap-4">
+          {[
+            'Un medio de opinión o partido político',
+            'Dependientes de fondos gubernamentales',
+            'Un blog de noticias del día',
+            'Sensacionalistas',
+            'Un proyecto académico cerrado',
+          ].map((item) => (
+            <li class="flex items-start gap-3 text-sm leading-relaxed text-[#6B6B6B]">
+              <span class="text-[#CCC] mt-0.5 shrink-0">—</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Name origin -->
+  <section class="border-b border-[#E8E8E8] bg-[#FAFAFA]">
+    <div class="max-w-7xl mx-auto px-6 py-12 max-w-2xl">
+      <p class="text-[11px] uppercase tracking-widest text-[#6B6B6B] mb-4">El nombre</p>
+      <p class="text-base leading-relaxed">
+        <strong>KUKO</strong> viene del idioma Cabécar — uno de los pueblos indígenas originarios de Costa Rica —
+        donde significa <em>"ver"</em> o <em>"mirar con atención"</em>. Ese es exactamente nuestro compromiso:
+        mirar los datos con atención y sin miedo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contacto" class="max-w-7xl mx-auto px-6 py-20 max-w-2xl">
+    <p class="text-[11px] uppercase tracking-widest text-[#6B6B6B] mb-4">Contacto</p>
+    <h2 class="text-3xl font-bold mb-6">¿Tienes un dato, una pista o quieres colaborar?</h2>
+    <p class="text-[#444] mb-8 leading-relaxed">
+      Escríbenos. Protegemos las fuentes y trabajamos con datos de forma ética.
+    </p>
+    <a
+      href="mailto:hola@kuko.cr"
+      class="inline-block border-2 border-black px-8 py-4 font-semibold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-colors"
+    >
+      hola@kuko.cr
+    </a>
+  </section>
+</BaseLayout>

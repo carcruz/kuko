@@ -1,0 +1,83 @@
+---
+const year = new Date().getFullYear()
+---
+
+<footer class="bg-[#1A1A1A] text-white mt-24">
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <!-- Brand -->
+    <div class="md:col-span-1">
+      <p class="text-3xl font-black tracking-tight leading-none mb-2">KUKO</p>
+      <p class="text-[12px] text-[#888] uppercase tracking-[0.08em]">Pensamiento crítico para Costa Rica</p>
+      <p class="text-sm text-[#888] mt-4 leading-relaxed">
+        Periodismo de datos independiente.
+      </p>
+    </div>
+
+    <!-- Contenido -->
+    <div>
+      <p class="text-[11px] uppercase tracking-widest text-[#666] mb-4">Contenido</p>
+      <ul class="flex flex-col gap-3">
+        {[
+          ['Investigaciones', '/investigaciones'],
+          ['Contexto Internacional', '/contexto-internacional'],
+          ['Datos', '/datos'],
+          ['Propuestas', '/propuestas'],
+        ].map(([label, href]) => (
+          <li>
+            <a href={href} class="text-sm text-[#CCC] hover:text-white transition-colors">{label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Organización -->
+    <div>
+      <p class="text-[11px] uppercase tracking-widest text-[#666] mb-4">Organización</p>
+      <ul class="flex flex-col gap-3">
+        {[
+          ['Acerca de', '/acerca-de'],
+          ['Equipo', '/acerca-de#equipo'],
+          ['Metodología', '/acerca-de#metodologia'],
+          ['Contacto', '/acerca-de#contacto'],
+        ].map(([label, href]) => (
+          <li>
+            <a href={href} class="text-sm text-[#CCC] hover:text-white transition-colors">{label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div>
+      <p class="text-[11px] uppercase tracking-widest text-[#666] mb-4">Boletín</p>
+      <p class="text-sm text-[#999] mb-4 leading-relaxed">
+        Investigaciones directo a tu correo, sin spam.
+      </p>
+      <form class="flex" aria-label="Suscripción al boletín">
+        <input
+          type="email"
+          placeholder="tu@correo.com"
+          class="flex-1 bg-[#2A2A2A] border border-[#444] text-white text-sm px-3 py-2 placeholder-[#666] focus:outline-none focus:border-[#00A896]"
+          required
+        />
+        <button
+          type="submit"
+          class="bg-[#00A896] text-white text-sm font-semibold px-4 py-2 hover:bg-[#008F82] transition-colors whitespace-nowrap"
+        >
+          Suscribir
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="border-t border-[#2A2A2A]">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-[12px] text-[#555]">© {year} KUKO. Algunos derechos reservados.</p>
+      <div class="flex items-center gap-6">
+        {[['Privacidad', '/privacidad'], ['Términos', '/terminos']].map(([label, href]) => (
+          <a href={href} class="text-[12px] text-[#555] hover:text-[#888] transition-colors">{label}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

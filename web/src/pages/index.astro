@@ -1,0 +1,237 @@
+---
+export const prerender = true
+
+import BaseLayout from '../layouts/BaseLayout.astro'
+import HomeHeroChart from '../components/HomeHeroChart'
+import HomeBusChart from '../components/HomeBusChart'
+---
+
+<BaseLayout title="KUKO" description="Periodismo de datos e investigación independiente para Costa Rica.">
+
+  {/* ── Hero featured card ─────────────────────────────────────────────── */}
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <a
+      href="/articulo/sistema-numeracion-buses"
+      class="block border border-black mb-8 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-300 group"
+    >
+      <div class="grid md:grid-cols-2">
+        {/* Left: text */}
+        <div class="p-8 md:p-12 flex flex-col justify-between border-b md:border-b-0 md:border-r border-black">
+          <div>
+            <div class="mb-4">
+              <span class="inline-block px-3 py-1 text-xs uppercase tracking-wide font-medium bg-[#E85D75]/20 text-[#E85D75]">
+                Salud Pública
+              </span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black tracking-tight leading-[1.1] mb-4">
+              Listas de Espera CCSS: +68% en Cinco Años
+            </h2>
+            <p class="text-lg text-[#1A1A1A] leading-relaxed mb-6">
+              Las listas de espera para cirugías han aumentado de 42,000 a 68,000 personas desde 2020. Analizamos las causas, comparamos con sistemas regionales, y exploramos soluciones implementadas en otros países.
+            </p>
+          </div>
+          <div class="flex items-center gap-4 text-sm text-[#6B6B6B]">
+            <span>Enero 2025</span>
+            <span>·</span>
+            <span>18 min lectura</span>
+            <svg class="w-4 h-4 ml-auto text-[#6B6B6B] group-hover:text-black transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Right: chart */}
+        <div class="p-8 md:p-12 bg-[#FAFAFA] flex items-center">
+          <HomeHeroChart client:only="react" />
+        </div>
+      </div>
+    </a>
+
+    {/* ── Three-column grid ─────────────────────────────────────────────── */}
+    <div class="grid md:grid-cols-3 gap-px bg-[#E8E8E8] border border-[#E8E8E8]">
+
+      {/* Col 1: Buses — links to article */}
+      <a
+        href="/articulo/sistema-numeracion-buses"
+        class="bg-white p-6 flex flex-col hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all duration-200 group"
+      >
+        <div class="mb-3">
+          <span class="inline-block px-3 py-1 text-xs uppercase tracking-wide font-medium bg-[#00A896]/20 text-[#00A896]">
+            Movilidad & Transporte
+          </span>
+        </div>
+        <h3 class="text-xl font-black tracking-tight mb-3 leading-tight flex-1">
+          Sistema de Numeración de Buses: El Caos que Pagamos Cada Día
+        </h3>
+        <p class="text-sm text-[#6B6B6B] mb-4 leading-relaxed line-clamp-2">
+          Exploramos sistemas internacionales y opciones viables para Costa Rica.
+        </p>
+        <div class="flex items-center justify-between mt-auto">
+          <span class="text-xs text-[#6B6B6B]">25 min</span>
+          <svg class="w-4 h-4 text-[#6B6B6B] group-hover:text-black transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </div>
+      </a>
+
+      {/* Col 2: Economy with mini chart */}
+      <div class="bg-white flex flex-col hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all duration-200">
+        <div class="p-6 border-b border-[#E8E8E8]">
+          <div class="mb-3">
+            <span class="inline-block px-3 py-1 text-xs uppercase tracking-wide font-medium bg-[#F5A623]/20 text-[#F5A623]">
+              Economía & Finanzas
+            </span>
+          </div>
+          <h3 class="text-xl font-black tracking-tight leading-tight">
+            Canasta Básica: +34% desde 2020
+          </h3>
+        </div>
+        <div class="p-4 bg-[#FAFAFA] flex-1 flex items-center">
+          <HomeBusChart client:only="react" />
+        </div>
+      </div>
+
+      {/* Col 3: Education */}
+      <div class="bg-white p-6 flex flex-col hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all duration-200">
+        <div class="mb-3">
+          <span class="inline-block px-3 py-1 text-xs uppercase tracking-wide font-medium bg-[#5B8DEE]/20 text-[#5B8DEE]">
+            Educación
+          </span>
+        </div>
+        <h3 class="text-xl font-black tracking-tight mb-3 leading-tight flex-1">
+          ¿Qué son las Pruebas PISA y Por Qué Importan?
+        </h3>
+        <p class="text-sm text-[#6B6B6B] mb-4 leading-relaxed line-clamp-2">
+          Desmitificamos las evaluaciones internacionales de educación y lo que realmente dicen sobre el sistema educativo costarricense.
+        </p>
+        <div class="flex items-center justify-between mt-auto">
+          <span class="text-xs text-[#6B6B6B]">10 min</span>
+          <svg class="w-4 h-4 text-[#6B6B6B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {/* ── More investigations ───────────────────────────────────────────── */}
+  <section class="max-w-7xl mx-auto px-6 py-12 border-t border-[#E8E8E8]">
+    <div class="mb-8">
+      <h3 class="text-2xl md:text-3xl font-black tracking-tight mb-2">Más Investigaciones</h3>
+      <p class="text-[#6B6B6B]">Análisis basados en datos para entender Costa Rica</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-px bg-[#E8E8E8] border border-[#E8E8E8]">
+
+      <div class="bg-white p-8 flex flex-col hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all duration-200 group">
+        <div class="mb-4 flex items-center gap-3 flex-wrap">
+          <span class="inline-block px-3 py-1 text-xs uppercase tracking-wide font-medium bg-[#00A896]/20 text-[#00A896]">
+            Movilidad & Transporte
+          </span>
+          <span class="text-xs text-[#6B6B6B] uppercase tracking-wide">Contexto Internacional</span>
+        </div>
+        <h4 class="text-2xl font-black tracking-tight mb-4 leading-tight">
+          Chile y su Transantiago: Lecciones para Costa Rica
+        </h4>
+        <p class="text-[#1A1A1A] leading-relaxed mb-4 line-clamp-3">
+          ¿Qué podemos aprender de la mayor reforma de transporte público en la historia de Chile? Un análisis de viabilidad para CR.
+        </p>
+        <div class="flex items-center justify-between mt-auto">
+          <span class="text-sm text-[#6B6B6B]">12 min lectura</span>
+          <svg class="w-5 h-5 text-[#6B6B6B] group-hover:text-black transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="bg-white p-8 flex flex-col hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all duration-200 group">
+        <div class="mb-4 flex items-center gap-3 flex-wrap">
+          <span class="inline-block px-3 py-1 text-xs uppercase tracking-wide font-medium bg-[#F5A623]/20 text-[#F5A623]">
+            Economía & Finanzas
+          </span>
+          <span class="text-xs text-[#6B6B6B] uppercase tracking-wide">Análisis de Datos</span>
+        </div>
+        <h4 class="text-2xl font-black tracking-tight mb-4 leading-tight">
+          Canasta Básica: Evolución del Costo de Vida 2020–2025
+        </h4>
+        <p class="text-[#1A1A1A] leading-relaxed mb-4 line-clamp-3">
+          Cinco años de datos sobre el costo de la canasta básica y su impacto diferenciado por nivel de ingreso y región.
+        </p>
+        <div class="flex items-center justify-between mt-auto">
+          <span class="text-sm text-[#6B6B6B]">8 min lectura</span>
+          <svg class="w-5 h-5 text-[#6B6B6B] group-hover:text-black transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </div>
+      </div>
+
+    </div>
+    <div class="mt-12 text-center">
+      <a
+        href="/investigaciones"
+        class="inline-flex items-center gap-2 border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors font-medium text-sm uppercase tracking-wide"
+      >
+        Ver todas las investigaciones
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  {/* ── Stats band ───────────────────────────────────────────────────── */}
+  <section class="bg-[#1A1A1A] text-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-12">
+        <div>
+          <div class="text-5xl md:text-6xl font-black tracking-tight mb-4">476</div>
+          <p class="text-[#E5E5E5] leading-relaxed">
+            Rutas de bus registradas sin sistema de numeración geográfico coherente
+          </p>
+        </div>
+        <div>
+          <div class="text-5xl md:text-6xl font-black tracking-tight mb-4">68%</div>
+          <p class="text-[#E5E5E5] leading-relaxed">
+            Aumento en listas de espera quirúrgica en la CCSS desde 2020
+          </p>
+        </div>
+        <div>
+          <div class="text-5xl md:text-6xl font-black tracking-tight mb-4">24k</div>
+          <p class="text-[#E5E5E5] leading-relaxed">
+            Horas de tráfico perdidas anualmente por conductor promedio en San José
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Newsletter ───────────────────────────────────────────────────── */}
+  <section class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+    <div class="max-w-2xl mx-auto text-center">
+      <svg class="w-10 h-10 mx-auto mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="4" width="20" height="16" rx="0" />
+        <path d="M2 7l10 7 10-7" />
+      </svg>
+      <h3 class="text-3xl md:text-4xl font-black tracking-tight mb-4">Análisis en tu Bandeja</h3>
+      <p class="text-lg text-[#1A1A1A] mb-8">
+        Recibe nuestras investigaciones quincenalmente. Sin spam, solo pensamiento crítico.
+      </p>
+      <form class="flex flex-col sm:flex-row max-w-lg mx-auto" aria-label="Suscripción al boletín">
+        <input
+          type="email"
+          placeholder="tu@email.com"
+          class="flex-1 h-[52px] px-5 border border-black sm:border-r-0 focus:outline-none focus:border-[#00A896] text-sm placeholder:text-[#7A7A7A]"
+          required
+        />
+        <button
+          type="submit"
+          class="h-[52px] bg-black text-white px-6 border border-black hover:bg-[#00A896] hover:border-[#00A896] transition-colors text-sm font-medium whitespace-nowrap"
+        >
+          Suscribirme
+        </button>
+      </form>
+      <p class="text-xs text-[#6B6B6B] mt-4">Puedes cancelar tu suscripción en cualquier momento.</p>
+    </div>
+  </section>
+
+</BaseLayout>

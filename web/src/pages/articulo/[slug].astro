@@ -1,0 +1,189 @@
+---
+export const prerender = true
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import ArticleCard from '../../components/cards/ArticleCard.astro'
+import ReadingProgress from '../../components/article/ReadingProgress'
+import StickyToC from '../../components/article/StickyToC'
+import ArticleBody from '../../components/article/ArticleBody'
+import { reader } from '../../lib/reader'
+
+export async function getStaticPaths() {
+  const articles = await reader.collections.articles.all()
+  return articles
+    .filter((a) => a.entry.status === 'published')
+    .map((a) => ({ params: { slug: a.slug } }))
+}
+
+const { slug } = Astro.params
+const article = await reader.collections.articles.read(slug)
+if (!article || article.status !== 'published') return Astro.redirect('/404')
+
+const {
+  title,
+  excerpt,
+  coverImage,
+  coverImageAlt,
+  publishedAt,
+  readingTimeMinutes,
+  contentType,
+  status,
+  seoTitle,
+  seoDescription,
+  noIndex,
+} = article
+
+// Resolve relationships
+const categoryEntry = article.category
+  ? await reader.collections.categories.read(article.category)
+  : null
+const category = categoryEntry
+  ? { title: categoryEntry.title, slug: article.category!, color: categoryEntry.color }
+  : null
+
+const authorEntries = await Promise.all(
+  (article.authors ?? []).map((slug) => reader.collections.authors.read(slug))
+)
+const authors = authorEntries.filter(Boolean) as NonNullable<(typeof authorEntries)[number]>[]
+
+const body = await article.body()
+
+const date = publishedAt
+  ? new Date(publishedAt).toLocaleDateString('es-CR', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null
+
+// Build ToC from h2 headings in the document
+const tocSections = body
+  .filter((node: any) => node.type === 'heading' && node.level === 2)
+  .map((node: any) => {
+    const text = node.children?.map((c: any) => c.text ?? '').join('') ?? ''
+    const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+    return { id, title: text }
+  })
+---
+
+<BaseLayout
+  title={seoTitle || title}
+  description={seoDescription || excerpt || undefined}
+  ogImage={coverImage ?? undefined}
+  noIndex={noIndex ?? false}
+>
+  <ReadingProgress client:only="react" targetId="article-body" />
+
+  <!-- Article header -->
+  <header class="border-b border-black">
+    <div class="max-w-3xl mx-auto px-6 py-10 md:py-16">
+      <div class="flex items-center gap-2 mb-6 text-[11px] uppercase tracking-widest">
+        <a href="/investigaciones" class="text-[#6B6B6B] hover:text-black transition-colors">Investigaciones</a>
+        {category && (
+          <>
+            <span class="text-[#CCC]">/</span>
+            <span style={`color: ${category.color ?? '#6B6B6B'}`}>{category.title}</span>
+          </>
+        )}
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-black tracking-tight leading-tight mb-6">{title}</h1>
+
+      {excerpt && (
+        <p class="text-xl text-[#444] leading-relaxed mb-8 font-light">{excerpt}</p>
+      )}
+
+      <div class="flex flex-wrap items-center gap-5 text-sm text-[#6B6B6B] border-t border-[#E8E8E8] pt-6">
+        {authors.length > 0 && (
+          <span>Por {authors.map((a) => a.name).join(', ')}</span>
+        )}
+        {date && <time datetime={publishedAt ?? undefined}>{date}</time>}
+        {readingTimeMinutes && <span>{readingTimeMinutes} min de lectura</span>}
+        {contentType && (
+          <span class="border border-[#E8E8E8] text-[11px] uppercase tracking-widest px-2 py-0.5">
+            {contentType}
+          </span>
+        )}
+      </div>
+    </div>
+  </header>
+
+  <!-- Cover image -->
+  {coverImage && (
+    <div class="border-b border-[#E8E8E8] overflow-hidden max-h-[520px]">
+      <img
+        src={coverImage}
+        alt={coverImageAlt ?? title}
+        class="w-full object-cover max-h-[520px]"
+        loading="eager"
+      />
+    </div>
+  )}
+
+  <!-- Body layout -->
+  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 xl:grid-cols-[220px_1fr_200px] gap-12">
+    <!-- ToC -->
+    {tocSections.length > 0 && (
+      <aside class="hidden xl:block xl:sticky xl:top-[96px] xl:self-start">
+        <StickyToC client:only="react" sections={tocSections} />
+      </aside>
+    )}
+
+    <!-- Article body -->
+    <article id="article-body" class={tocSections.length === 0 ? 'xl:col-span-3' : ''}>
+      <ArticleBody client:only="react" document={body} />
+    </article>
+
+    <!-- Share + meta sidebar -->
+    <aside class="hidden xl:block xl:sticky xl:top-[96px] xl:self-start">
+      <div class="flex flex-col gap-8">
+        <div>
+          <p class="text-[11px] uppercase tracking-widest text-[#6B6B6B] mb-3">Compartir</p>
+          <div class="flex flex-col gap-2">
+            <a
+              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(Astro.url.href)}&text=${encodeURIComponent(title)}`}
+              class="text-xs uppercase tracking-wide border border-[#E8E8E8] px-3 py-2 hover:border-black transition-colors text-center"
+              target="_blank" rel="noopener noreferrer"
+            >
+              Twitter / X
+            </a>
+            <a
+              href={`https://wa.me/?text=${encodeURIComponent(title + ' ' + Astro.url.href)}`}
+              class="text-xs uppercase tracking-wide border border-[#E8E8E8] px-3 py-2 hover:border-black transition-colors text-center"
+              target="_blank" rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+            <button
+              id="copy-link"
+              data-url={Astro.url.href}
+              class="text-xs uppercase tracking-wide border border-[#E8E8E8] px-3 py-2 hover:border-black transition-colors"
+            >
+              Copiar enlace
+            </button>
+          </div>
+        </div>
+
+        {category && (
+          <div>
+            <p class="text-[11px] uppercase tracking-widest text-[#6B6B6B] mb-2">Categoría</p>
+            <a
+              href={`/investigaciones?category=${category.slug}`}
+              class="text-sm font-semibold hover:text-[#00A896] transition-colors"
+              style={`color: ${category.color ?? 'inherit'}`}
+            >
+              {category.title}
+            </a>
+          </div>
+        )}
+      </div>
+    </aside>
+  </div>
+</BaseLayout>
+
+<script>
+  const btn = document.getElementById('copy-link') as HTMLButtonElement | null
+  btn?.addEventListener('click', () => {
+    navigator.clipboard.writeText(btn.dataset.url!).then(() => {
+      const orig = btn.textContent
+      btn.textContent = '¡Copiado!'
+      setTimeout(() => { btn.textContent = orig }, 2000)
+    })
+  })
+</script>
