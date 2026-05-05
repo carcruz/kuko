@@ -13,7 +13,10 @@
       "Bash(node -e ' *)",
       "Bash(pkill -f \"astro dev\")",
       "Bash(npm run *)",
-      "Bash(curl -s \"http://localhost:4322/articulo/sistema-numeracion-buses\")"
+      "Bash(curl -s \"http://localhost:4322/articulo/sistema-numeracion-buses\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
